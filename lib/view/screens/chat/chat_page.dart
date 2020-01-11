@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ui_challenge_1/model/message.dart';
 import 'package:ui_challenge_1/view/utils/message_utils.dart';
 
-import 'components/chat_page_message_box.dart';
+import 'components/chat_page_messages.dart';
 import 'components/chat_page_profile_card.dart';
 import 'components/chat_page_textfield.dart';
 
@@ -34,13 +34,11 @@ class ChatPage extends StatelessWidget {
                   itemCount: messageList.length,
                   itemBuilder: (context, index) {
                     final message = messageList[index];
-                    return Align(
-                      alignment:
-                          message.isMe ? Alignment.topRight : Alignment.topLeft,
-                      child: MessageBox(
-                        message: message,
-                        color: color,
-                      ),
+                    return Messages(
+                      message: message.message,
+                      time: message.time,
+                      isMyMessage: message.isMe,
+                      color: color,
                     );
                   },
                 ),
